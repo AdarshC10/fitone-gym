@@ -7,10 +7,6 @@ const generateToken = (id) => {
   });
 };
 
-const isValidEmail = (email) => {
-  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-};
-
 // @desc Register new user
 // @route POST /api/auth/register
 exports.registerUser = async (req, res) => {
@@ -21,22 +17,22 @@ exports.registerUser = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please fill in all required fields' });
     }
 
-    if (!isValidEmail(email)) {
-      return res.status(400).json({ success: false, message: 'Please provide a valid email address' });
+    const cleanEmail = String(email).toLowerCase().trim();
+
+    if (!cleanEmail.includes('@') || !cleanEmail.includes('.')) {
+      return res.status(400).json({ success: false, message: 'Please enter a valid email address' });
     }
 
-    if (password.length < 6) {
+    if (String(password).length < 4) {
       return res.status(400).json({
         success: false,
-        message: 'Password must be at least 6 characters long'
+        message: 'Password must be at least 4 characters'
       });
     }
 
     if (confirmPassword && password !== confirmPassword) {
       return res.status(400).json({ success: false, message: 'Passwords do not match' });
     }
-
-    const cleanEmail = email.toLowerCase().trim();
 
     const userExists = await User.findOne({ email: cleanEmail });
     if (userExists) {
@@ -46,9 +42,9 @@ exports.registerUser = async (req, res) => {
     const role = cleanEmail === 'admin@fitone.com' ? 'admin' : 'member';
 
     const user = await User.create({
-      name: name.trim(),
+      name: String(name).trim(),
       email: cleanEmail,
-      phone: phone.trim(),
+      phone: String(phone).trim(),
       password,
       role
     });
@@ -81,7 +77,7 @@ exports.loginUser = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Please provide email and password' });
     }
 
-    const cleanEmail = email.toLowerCase().trim();
+    const cleanEmail = String(email).toLowerCase().trim();
 
     const user = await User.findOne({ email: cleanEmail });
     if (user && (await user.matchPassword(password))) {
