@@ -1,0 +1,16 @@
+{
+  "name": "fitone-gym",
+  "version": "1.0.0",
+  "description": "FITONE FITNESS CLUB - Premium Gym & Fitness Club Web Application",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server": "nodemon server/server.js",
+    "client": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "seed": "node server/utils/seedData.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
