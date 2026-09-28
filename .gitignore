@@ -1,3 +1,8 @@
+# Private Documentation (Not pushed to GitHub)
+PRIVATE_NOTES.md
+PRIVATE*
+*_NOTES.md
+
 # Environment variables
 .env
 .env.local
