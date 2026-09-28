@@ -15,39 +15,6 @@ A modern, premium, fully responsive fitness gym web application built with **Rea
 
 ---
 
-## Quick Start (Local Development)
-
-### 1. Install Dependencies
-```bash
-# Install Server Dependencies
-cd server
-npm install
-
-# Install Client Dependencies
-cd ../client
-npm install
-```
-
-### 2. Environment Configuration
-Create a `.env` file in the root directory (based on `.env.example`):
-```env
-PORT=5000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key_here
-CLIENT_URL=http://localhost:3000
-NODE_ENV=development
-```
-
-### 3. Run Development Servers
-```bash
-# In the root directory
-npm dev
-```
-- **Frontend App**: `http://localhost:3000`
-- **Backend API**: `http://localhost:5000`
-
----
-
 ## Deployment & Hosting
 
 ### Deploying Frontend (Vercel)
