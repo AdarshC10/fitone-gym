@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Dumbbell, Mail, Lock, ArrowRight, Loader2, KeyRound } from 'lucide-react';
+import { Dumbbell, Mail, Lock, ArrowRight, Loader2 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
 
@@ -37,16 +37,6 @@ const LoginPage = () => {
     }
   };
 
-  const handleDemoFill = (type) => {
-    if (type === 'admin') {
-      setEmail('admin@fitone.com');
-      setPassword('Admin@12345');
-    } else {
-      setEmail('rohit@fitone.com');
-      setPassword('Member@12345');
-    }
-  };
-
   return (
     <div className="min-h-screen pt-28 pb-16 bg-brand-black flex items-center justify-center px-4 relative overflow-hidden">
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-brand-red/10 blur-[150px] pointer-events-none" />
@@ -70,29 +60,6 @@ const LoginPage = () => {
           <p className="text-xs text-gray-400">Sign in to manage your workout dashboard & plans.</p>
         </div>
 
-        {/* Demo Quick Fill Buttons */}
-        <div className="mb-6 bg-brand-darkCharcoal p-3 rounded-2xl border border-white/5 space-y-2">
-          <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest text-center flex items-center justify-center gap-1">
-            <KeyRound className="w-3 h-3 text-brand-red" /> DEMO QUICK FILL
-          </p>
-          <div className="grid grid-cols-2 gap-2">
-            <button
-              type="button"
-              onClick={() => handleDemoFill('member')}
-              className="text-[10px] font-bold py-1.5 px-3 rounded-lg bg-white/5 hover:bg-brand-red/20 hover:text-brand-red text-gray-300 border border-white/10 transition-colors uppercase"
-            >
-              Demo Member
-            </button>
-            <button
-              type="button"
-              onClick={() => handleDemoFill('admin')}
-              className="text-[10px] font-bold py-1.5 px-3 rounded-lg bg-white/5 hover:bg-brand-red/20 hover:text-brand-red text-gray-300 border border-white/10 transition-colors uppercase"
-            >
-              Demo Admin
-            </button>
-          </div>
-        </div>
-
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
             <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-2">
@@ -104,7 +71,7 @@ const LoginPage = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="rohit@fitone.com"
+                placeholder="your.email@example.com"
                 required
                 className="w-full bg-brand-darkCharcoal border border-brand-cardBorder rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-red transition-colors"
               />
