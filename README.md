@@ -11,7 +11,7 @@ A modern, premium, fully responsive fitness gym web application built with **Rea
 - **Interactive Checkout Modal**: Payment Gateway checkout UI supporting Credit/Debit Card, UPI QR Code scanning, and Net Banking.
 - **Member Dashboard**: Active plan details, trainer assignment, BMI calculator, body metrics tracking, and workout compliance.
 - **Admin Control Center**: Revenue metrics, active membership counts, and CRUD management for Users, Trainers, Programs, Memberships, Contact Messages, and Newsletter Subscribers.
-- **Security Hardened**: Helmet HTTP headers, Mongo Sanitization against NoSQL injection, API Rate Limiting, and 256-bit JWT secret authentication.
+- **Security Hardened**: Helmet HTTP headers, Mongo Sanitization against NoSQL injection, API Rate Limiting, and JWT secret authentication.
 
 ---
 
@@ -32,8 +32,8 @@ npm install
 Create a `.env` file in the root directory (based on `.env.example`):
 ```env
 PORT=5000
-MONGODB_URI=mongodb://127.0.0.1:27017/fitone-gym
-JWT_SECRET=92c6b85138234630cb8dec4b172e5fe8c69c6d88e3723cf95c67b58795fc4256
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key_here
 CLIENT_URL=http://localhost:3000
 NODE_ENV=development
 ```
@@ -48,37 +48,18 @@ npm dev
 
 ---
 
-## Demo Accounts
-
-- **Admin Account**: `admin@fitone.com` / `Admin@12345`
-- **Member Account**: `rohit@fitone.com` / `Member@12345`
-
----
-
-## How to Push to GitHub
-
-1. Create a new repository on [GitHub](https://github.com/new) (e.g. `fitone-gym`).
-2. Run the following commands in your terminal:
-
-```bash
-git remote add origin https://github.com/YOUR_USERNAME/fitone-gym.git
-git push -u origin main
-```
-
----
-
-## How to Publish / Deploy Live
+## Deployment & Hosting
 
 ### Deploying Frontend (Vercel)
-1. Go to [Vercel](https://vercel.com) and import your GitHub repository.
+1. Import your GitHub repository into [Vercel](https://vercel.com).
 2. Set **Root Directory** to `client`.
 3. Set **Framework Preset** to `Vite`.
 4. Click **Deploy**.
 
 ### Deploying Backend (Render / Railway)
-1. Go to [Render.com](https://render.com) and create a **Web Service**.
+1. Create a **Web Service** on [Render](https://render.com).
 2. Connect your GitHub repository.
 3. Set **Root Directory** to `server`.
 4. Build Command: `npm install`
 5. Start Command: `node server.js`
-6. Add Environment Variables (`MONGODB_URI`, `JWT_SECRET`, `NODE_ENV=production`).
+6. Configure environment variables (`MONGODB_URI`, `JWT_SECRET`, `NODE_ENV=production`).
